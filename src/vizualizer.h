@@ -11,7 +11,7 @@ class Vizualizer{
 
     public:
         Vizualizer(sf::RenderWindow& window);
-        void start();
+        void drawGrid();
 };
 
 #endif
