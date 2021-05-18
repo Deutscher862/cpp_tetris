@@ -4,12 +4,12 @@
 #include <SFML/Graphics.hpp>
 #include "config.h"
 
-class Shape{
-    private:
-        sf::Color color;
-
+class Vector2{
     public:
+        int x;
+        int y;
 
+        Vector2(int x = -1, int = -1): x(x), y(y){};
 };
 
 #endif

@@ -7,6 +7,7 @@
 class Shape{
     private:
         sf::Color color;
+        
 
     public:
 

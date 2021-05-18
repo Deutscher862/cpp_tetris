@@ -3,7 +3,7 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "TETRIS");
+    sf::RenderWindow window(sf::VideoMode(1000, 900), "TETRIS");
     Vizualizer v(window);
 
     while(window.isOpen())
