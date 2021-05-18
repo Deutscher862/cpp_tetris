@@ -16,6 +16,7 @@ class Engine{
         Engine(Vizualizer& n_viz);
         void generateShape();
         void moveObject();
+        void checkIfEnd();
 };
 
 #endif
