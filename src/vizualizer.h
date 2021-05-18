@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "config.h"
 #include "tile.h"
+#include "shape.h"
 
 class Vizualizer{
     private:
@@ -13,6 +14,10 @@ class Vizualizer{
     public:
         explicit Vizualizer(sf::RenderWindow &window);
         void drawGrid();
+        bool canShapeFall(Shape* shape);
+        void colorTiles(Shape* shape, sf::Color color);
+        void blockTiles(Shape* shape);
+
 };
 
 #endif

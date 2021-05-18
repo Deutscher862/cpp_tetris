@@ -18,3 +18,36 @@ void Vizualizer::drawGrid(){
         }
     }
 }
+
+bool Vizualizer::canShapeFall(Shape* shape){
+    for(int i = 0; i < SHAPE_HEIGHT; i++){
+        for(int j = 0; j < SHAPE_WIDTH; j++){
+            Vector2* v = shape->getVectorAt(i, j);
+            int x = v->x;
+            if(x != -5 && (x+1 == HEIGHT || (x+1 >= 0 && !grid[x+1][v->y]->isEmpty())))
+                return false;
+        }
+    }
+    return true;
+}
+
+void Vizualizer::colorTiles(Shape* shape, sf::Color color){
+    for(int i = 0; i < SHAPE_HEIGHT; i++){
+        for(int j = 0; j < SHAPE_WIDTH; j++){
+            Vector2* v = shape->getVectorAt(i, j);
+            if(v->x >= 0){
+                grid[v->x][v->y]->setColor(color);
+            }
+        }
+    }
+}
+
+void Vizualizer::blockTiles(Shape* shape){
+    for(int i = 0; i < SHAPE_HEIGHT; i++){
+        for(int j = 0; j < SHAPE_WIDTH; j++){
+            Vector2* v = shape->getVectorAt(i, j);
+            if(v->x != -5)
+                grid[v->x][v->y]->setEmpty(false);
+        }
+    }
+}

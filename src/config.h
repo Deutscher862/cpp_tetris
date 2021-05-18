@@ -4,6 +4,6 @@
 #define WIDTH 10
 #define HEIGHT 20
 #define SHAPE_WIDTH 4
-#define SHAPE_HEIGHT 2
+#define SHAPE_HEIGHT 4
 
 #endif

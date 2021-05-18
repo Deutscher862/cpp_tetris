@@ -10,6 +10,8 @@ class Vector2{
         int y;
 
         Vector2(int x = -1, int = -1): x(x), y(y){};
+
+        void setVal(int nx, int ny){x=nx; y=ny;}
 };
 
 #endif
