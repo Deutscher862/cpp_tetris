@@ -5,7 +5,22 @@ Engine::Engine(Vizualizer& n_viz): vizualizer(n_viz){
 }
 
 void Engine::generateShape(){
-    this->currentShape = new O_Shape();
+    srand (time(NULL));
+    int shapeNumber = rand() % 3;
+    switch(shapeNumber){
+        case 0:
+            this->currentShape = new O_Shape();
+            break;
+        case 1:
+            this->currentShape = new I_Shape();
+            break;
+        case 2:
+            this->currentShape = new T_Shape();
+            break;
+        default:
+            //jakiś kod
+            break;
+        }
 }
 
 void Engine::moveObject(){

@@ -23,4 +23,16 @@ class O_Shape : public Shape{
         void fall();
 };
 
+class I_Shape : public Shape{
+    public:
+        I_Shape();
+        void fall();
+};
+
+class T_Shape : public Shape{
+    public:
+        T_Shape();
+        void fall();
+};
+
 #endif

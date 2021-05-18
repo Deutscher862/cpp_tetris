@@ -2,6 +2,7 @@
 #define ENGINE_H
 
 #include <SFML/Graphics.hpp>
+#include <time.h>
 #include "config.h"
 #include "vector2.h"
 #include "vizualizer.h"
