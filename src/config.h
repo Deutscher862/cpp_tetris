@@ -3,5 +3,7 @@
 
 #define WIDTH 10
 #define HEIGHT 40
+#define SHAPE_WIDTH 4
+#define SHAPE_HEIGHT 2
 
 #endif

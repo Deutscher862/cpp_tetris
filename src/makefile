@@ -9,8 +9,8 @@ all: tetris
 %.o: %.h
 		$(CXX) -c $< -o $@
 
-tetris: main.o vizualizer.o
-		$(CXX) -o tetris main.o vizualizer.o $(LIBS)
+tetris: main.o vizualizer.o tile.o 
+		$(CXX) -o tetris main.o vizualizer.o tile.o $(LIBS)
 
 run:
 	./tetris
