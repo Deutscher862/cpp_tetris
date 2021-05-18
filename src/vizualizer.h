@@ -7,11 +7,11 @@
 
 class Vizualizer{
     private:
-        Tile grid [HEIGHT][WIDTH];
+        Tile* grid [HEIGHT][WIDTH]{};
         sf::RenderWindow& window;
 
     public:
-        Vizualizer(sf::RenderWindow& window);
+        explicit Vizualizer(sf::RenderWindow &window);
         void drawGrid();
 };
 

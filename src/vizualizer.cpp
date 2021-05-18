@@ -2,20 +2,19 @@
 #include "config.h"
 #include "tile.h"
 
-Vizualizer::Vizualizer(sf::RenderWindow& window):window(window){
+Vizualizer::Vizualizer(sf::RenderWindow &window) : window(window){
     for(int i = 0; i < HEIGHT; i++){
         for(int j = 0; j < WIDTH; j++){
-            Tile t(i, j);
-            this->grid[i][j] = t;
+            grid[i][j] = new Tile();
+            grid[i][j]->setPosition(i, j);
         }
     }
 }
 
 void Vizualizer::drawGrid(){
-    for(int i = 0; i < HEIGHT; i++){
-        for(int j = 0; j < WIDTH; j++){
-            Tile t = this->grid[i][j];
-            this->window.draw(t.getRect());
+    for(auto & i : this->grid){
+        for(auto t : i){
+            this->window.draw(t->getRect());
         }
     }
 }

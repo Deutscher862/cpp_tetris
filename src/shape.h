@@ -7,7 +7,6 @@
 class Shape{
     private:
         sf::Color color;
-        sf::Vector2 position;
 
     public:
 
