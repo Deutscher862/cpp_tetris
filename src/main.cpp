@@ -26,7 +26,7 @@ int main()
         v.drawGrid();
         window.display();
 
-        usleep(500000);
+        usleep(250000);
     }
 
     return 0;

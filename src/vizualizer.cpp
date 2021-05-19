@@ -70,10 +70,12 @@ bool Vizualizer::canShapeRotateLeft(Shape* shape){
     for(int i = 0; i < 4; i++){
         Vector2* v = shape->getVectorAt(i);
         Vector2 v_test(v->x, v->y);
+        v_test.y = v->y;
+        //printf("ORG: %d %d   n: %d %d\n", v->x, v->y, v_test.x, v_test.y);
         v_test.rotateLeft(shape->getCenterVector());
         int x = v_test.x;
         int y = v_test.y;
-        if(y < 0 || y == WIDTH || (x >= 0 && x < HEIGHT && !grid[x][y]->isEmpty()))
+        if(y < 0 || y == WIDTH || x >= HEIGHT || (x >= 0 && x < HEIGHT && !grid[x][y]->isEmpty()))
             return false;
     }
     return true;
@@ -86,7 +88,7 @@ bool Vizualizer::canShapeRotateRight(Shape* shape){
         v_test.rotateRight(shape->getCenterVector());
         int x = v_test.x;
         int y = v_test.y;
-        if(y < 0 || y == WIDTH || (x >= 0 && x < HEIGHT && !grid[x][y]->isEmpty()))
+        if(y < 0 || y >= WIDTH || x >= HEIGHT || (x >= 0 && x < HEIGHT && !grid[x][y]->isEmpty()))
             return false;
     }
     return true;
