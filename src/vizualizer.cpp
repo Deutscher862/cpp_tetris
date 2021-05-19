@@ -20,60 +20,74 @@ void Vizualizer::drawGrid(){
 }
 
 bool Vizualizer::canShapeFall(Shape* shape){
-    for(int i = 0; i < SHAPE_HEIGHT; i++){
-        for(int j = 0; j < SHAPE_WIDTH; j++){
-            Vector2* v = shape->getVectorAt(i, j);
-            int x = v->x;
-            if(x != -5 && (x+1 == HEIGHT || (x+1 >= 0 && !grid[x+1][v->y]->isEmpty())))
-                return false;
-        }
+    for(int i = 0; i < 4; i++){
+        Vector2* v = shape->getVectorAt(i);
+        int x = v->x;
+        if(x+1 == HEIGHT || (x+1 >= 0 && !grid[x+1][v->y]->isEmpty()))
+            return false;
     }
     return true;
 }
 
 void Vizualizer::colorTiles(Shape* shape, sf::Color color){
-    for(int i = 0; i < SHAPE_HEIGHT; i++){
-        for(int j = 0; j < SHAPE_WIDTH; j++){
-            Vector2* v = shape->getVectorAt(i, j);
-            if(v->x >= 0){
-                grid[v->x][v->y]->setColor(color);
-            }
-        }
+    for(int i = 0; i < 4; i++){
+        Vector2* v = shape->getVectorAt(i);
+        if(v->x >= 0)
+            grid[v->x][v->y]->setColor(color);
     }
 }
 
 void Vizualizer::blockTiles(Shape* shape){
-    for(int i = 0; i < SHAPE_HEIGHT; i++){
-        for(int j = 0; j < SHAPE_WIDTH; j++){
-            Vector2* v = shape->getVectorAt(i, j);
-            if(v->x != -5)
-                grid[v->x][v->y]->setEmpty(false);
-        }
+    for(int i = 0; i < 4; i++){
+        Vector2* v = shape->getVectorAt(i);
+        grid[v->x][v->y]->setEmpty(false);
     }
 }
 
-bool Vizualizer::canShapeLeft(Shape* shape){
-    for(int i = 0; i < SHAPE_HEIGHT; i++){
-        for(int j = 0; j < SHAPE_WIDTH; j++){
-            Vector2* v = shape->getVectorAt(i, j);
-            int x = v->x;
-            int y = v->y;
-            if(x != -5 && (y-1 < 0 || (x >= 0 && !grid[x][y-1]->isEmpty())))
-                return false;
-        }
+bool Vizualizer::canShapeMoveLeft(Shape* shape){
+    for(int i = 0; i < 4; i++){
+        Vector2* v = shape->getVectorAt(i);
+        int x = v->x;
+        int y = v->y;
+        if(y-1 < 0 || (x >= 0 && !grid[x][y-1]->isEmpty()))
+            return false;
     }
     return true;
 }
 
-bool Vizualizer::canShapeRight(Shape* shape){
-    for(int i = 0; i < SHAPE_HEIGHT; i++){
-        for(int j = 0; j < SHAPE_WIDTH; j++){
-            Vector2* v = shape->getVectorAt(i, j);
-            int x = v->x;
-            int y = v->y;
-            if(x != -5 && (y+1 == WIDTH || (x >= 0 && !grid[x][y-1]->isEmpty())))
-                return false;
-        }
+bool Vizualizer::canShapeMoveRight(Shape* shape){
+    for(int i = 0; i < 4; i++){
+        Vector2* v = shape->getVectorAt(i);
+        int x = v->x;
+        int y = v->y;
+        if(y+1 == WIDTH || (x >= 0 && !grid[x][y-1]->isEmpty()))
+            return false;
+    }
+    return true;
+}
+
+bool Vizualizer::canShapeRotateLeft(Shape* shape){
+    for(int i = 0; i < 4; i++){
+        Vector2* v = shape->getVectorAt(i);
+        Vector2 v_test(v->x, v->y);
+        v_test.rotateLeft(shape->getCenterVector());
+        int x = v_test.x;
+        int y = v_test.y;
+        if(y < 0 || y == WIDTH || (x >= 0 && x < HEIGHT && !grid[x][y]->isEmpty()))
+            return false;
+    }
+    return true;
+}
+
+bool Vizualizer::canShapeRotateRight(Shape* shape){
+    for(int i = 0; i < 4; i++){
+        Vector2* v = shape->getVectorAt(i);
+        Vector2 v_test(v->x, v->y);
+        v_test.rotateRight(shape->getCenterVector());
+        int x = v_test.x;
+        int y = v_test.y;
+        if(y < 0 || y == WIDTH || (x >= 0 && x < HEIGHT && !grid[x][y]->isEmpty()))
+            return false;
     }
     return true;
 }

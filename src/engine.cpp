@@ -44,17 +44,12 @@ void Engine::moveObject(){
         vizualizer.blockTiles(currentShape);
         generateShape();
     }
-
 }
 
 void Engine::checkIfEnd(){
-    for(int i = 0; i < SHAPE_HEIGHT; i++){
-        for(int j = 0; j < SHAPE_WIDTH; j++){
-            Vector2* v = currentShape->getVectorAt(i, j);
-            if(v->x != -5 && v->x < 0){
-                exit(0);
-            }
-        }
+    for(int i = 0; i < 4; i++){
+        Vector2* v = currentShape->getVectorAt(i);
+        if(v->x < 0) exit(0);
     }
 }
 
@@ -66,7 +61,7 @@ void Engine::keyHandler(sf::Event event){
                 break;
             
             case sf::Keyboard::Left:
-                if(vizualizer.canShapeLeft(currentShape)){
+                if(vizualizer.canShapeMoveLeft(currentShape)){
                     vizualizer.colorTiles(currentShape, sf::Color::Black);
                     currentShape->moveLeft();
                     vizualizer.colorTiles(currentShape, currentShape->getColor());
@@ -74,7 +69,7 @@ void Engine::keyHandler(sf::Event event){
                 break;
 
             case sf::Keyboard::A:
-                if(vizualizer.canShapeLeft(currentShape)){
+                if(vizualizer.canShapeMoveLeft(currentShape)){
                     vizualizer.colorTiles(currentShape, sf::Color::Black);
                     currentShape->moveLeft();
                     vizualizer.colorTiles(currentShape, currentShape->getColor());
@@ -82,7 +77,7 @@ void Engine::keyHandler(sf::Event event){
                 break;
 
             case sf::Keyboard::Right:
-                if(vizualizer.canShapeRight(currentShape)){
+                if(vizualizer.canShapeMoveRight(currentShape)){
                     vizualizer.colorTiles(currentShape, sf::Color::Black);
                     currentShape->moveRight();
                     vizualizer.colorTiles(currentShape, currentShape->getColor());
@@ -90,9 +85,25 @@ void Engine::keyHandler(sf::Event event){
                 break;
 
             case sf::Keyboard::D:
-                if(vizualizer.canShapeRight(currentShape)){
+                if(vizualizer.canShapeMoveRight(currentShape)){
                     vizualizer.colorTiles(currentShape, sf::Color::Black);
                     currentShape->moveRight();
+                    vizualizer.colorTiles(currentShape, currentShape->getColor());
+                }
+                break;
+
+            case sf::Keyboard::Q:
+                if(vizualizer.canShapeRotateLeft(currentShape)){
+                    vizualizer.colorTiles(currentShape, sf::Color::Black);
+                    currentShape->rotateLeft();
+                    vizualizer.colorTiles(currentShape, currentShape->getColor());
+                }
+                break;
+
+            case sf::Keyboard::E:
+                if(vizualizer.canShapeRotateRight(currentShape)){
+                    vizualizer.colorTiles(currentShape, sf::Color::Black);
+                    currentShape->rotateRight();
                     vizualizer.colorTiles(currentShape, currentShape->getColor());
                 }
                 break;
