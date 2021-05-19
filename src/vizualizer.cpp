@@ -51,3 +51,29 @@ void Vizualizer::blockTiles(Shape* shape){
         }
     }
 }
+
+bool Vizualizer::canShapeLeft(Shape* shape){
+    for(int i = 0; i < SHAPE_HEIGHT; i++){
+        for(int j = 0; j < SHAPE_WIDTH; j++){
+            Vector2* v = shape->getVectorAt(i, j);
+            int x = v->x;
+            int y = v->y;
+            if(x != -5 && (y-1 < 0 || (x >= 0 && !grid[x][y-1]->isEmpty())))
+                return false;
+        }
+    }
+    return true;
+}
+
+bool Vizualizer::canShapeRight(Shape* shape){
+    for(int i = 0; i < SHAPE_HEIGHT; i++){
+        for(int j = 0; j < SHAPE_WIDTH; j++){
+            Vector2* v = shape->getVectorAt(i, j);
+            int x = v->x;
+            int y = v->y;
+            if(x != -5 && (y+1 == WIDTH || (x >= 0 && !grid[x][y-1]->isEmpty())))
+                return false;
+        }
+    }
+    return true;
+}

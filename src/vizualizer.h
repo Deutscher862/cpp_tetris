@@ -15,6 +15,8 @@ class Vizualizer{
         explicit Vizualizer(sf::RenderWindow &window);
         void drawGrid();
         bool canShapeFall(Shape* shape);
+        bool canShapeLeft(Shape* shape);
+        bool canShapeRight(Shape* shape);
         void colorTiles(Shape* shape, sf::Color color);
         void blockTiles(Shape* shape);
 

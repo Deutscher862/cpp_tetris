@@ -17,13 +17,16 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+            if (event.type == sf::Event::KeyPressed){
+                e.keyHandler(event);
+            }
         }
         e.moveObject();
         window.clear();
         v.drawGrid();
         window.display();
 
-        usleep(50000);
+        usleep(500000);
     }
 
     return 0;

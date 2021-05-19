@@ -18,6 +18,7 @@ class Engine{
         void generateShape();
         void moveObject();
         void checkIfEnd();
+        void keyHandler(sf::Event event);
 };
 
 #endif
