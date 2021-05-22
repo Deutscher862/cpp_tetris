@@ -34,9 +34,8 @@ void Engine::generateShape(){
 
 void Engine::moveObject(){
     if(this->vizualizer.canShapeFall(currentShape)){
-        //printf("RUSZAM SIĘ %d %d\n", currentShape->getVectorAt(1)->x, currentShape->getVectorAt(1)->y);
         vizualizer.colorTiles(currentShape, sf::Color::Black);
-        this->currentShape->fall();
+        this->currentShape->fall(); 
         vizualizer.colorTiles(currentShape, currentShape->getColor());
     }
     else{
@@ -76,18 +75,10 @@ void Engine::keyHandler(sf::Event event){
                 }
                 break;
 
-            case sf::Keyboard::Q:
-                if(vizualizer.canShapeRotateLeft(currentShape)){
+            case sf::Keyboard::W:
+                if(vizualizer.canShapeRotate(currentShape)){
                     vizualizer.colorTiles(currentShape, sf::Color::Black);
-                    currentShape->rotateLeft();
-                    vizualizer.colorTiles(currentShape, currentShape->getColor());
-                }
-                break;
-
-            case sf::Keyboard::E:
-                if(vizualizer.canShapeRotateRight(currentShape)){
-                    vizualizer.colorTiles(currentShape, sf::Color::Black);
-                    currentShape->rotateRight();
+                    currentShape->rotate();
                     vizualizer.colorTiles(currentShape, currentShape->getColor());
                 }
                 break;

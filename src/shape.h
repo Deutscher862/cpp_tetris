@@ -15,8 +15,7 @@ class Shape{
         virtual void fall() = 0;
         virtual void moveLeft() = 0;
         virtual void moveRight() = 0;
-        virtual void rotateLeft() = 0;
-        virtual void rotateRight() = 0;
+        virtual void rotate() = 0;
         Vector2* getVectorAt(int x) {return map[x];}
         sf::Color getColor() {return color;}
         Vector2 getCenterVector(){return center;}
@@ -28,8 +27,7 @@ class O_Shape : public Shape{
         void fall();
         void moveLeft();
         void moveRight();
-        void rotateLeft();
-        void rotateRight();
+        void rotate();
 };
 
 class I_Shape : public Shape{
@@ -38,8 +36,7 @@ class I_Shape : public Shape{
         void fall();
         void moveLeft();
         void moveRight();
-        void rotateLeft();
-        void rotateRight();
+        void rotate();
 };
 
 class T_Shape : public Shape{
@@ -48,8 +45,7 @@ class T_Shape : public Shape{
         void fall();
         void moveLeft();
         void moveRight();
-        void rotateLeft();
-        void rotateRight();
+        void rotate();
 };
 
 class L_Shape : public Shape{
@@ -58,8 +54,7 @@ class L_Shape : public Shape{
         void fall();
         void moveLeft();
         void moveRight();
-        void rotateLeft();
-        void rotateRight();
+        void rotate();
 };
 
 class J_Shape : public Shape{
@@ -68,8 +63,7 @@ class J_Shape : public Shape{
         void fall();
         void moveLeft();
         void moveRight();
-        void rotateLeft();
-        void rotateRight();
+        void rotate();
 };
 
 class S_Shape : public Shape{
@@ -78,8 +72,7 @@ class S_Shape : public Shape{
         void fall();
         void moveLeft();
         void moveRight();
-        void rotateLeft();
-        void rotateRight();
+        void rotate();
 };
 
 class Z_Shape : public Shape{
@@ -88,8 +81,7 @@ class Z_Shape : public Shape{
         void fall();
         void moveLeft();
         void moveRight();
-        void rotateLeft();
-        void rotateRight();
+        void rotate();
 };
 
 #endif

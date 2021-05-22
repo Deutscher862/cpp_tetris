@@ -1,24 +1,26 @@
 #include "vector2.h"
 #include <math.h>
 
-void Vector2::rotateLeft(Vector2 center){
-    printf("mam %d %d center %d %d \n", x, y, center.x, center.y);
+void Vector2::rotate(Vector2 center){
+    printf("STARE %d %d \ncenter %d %d\n", x, y, center.x, center.y);
     if(center.x == x && center.y == y)
         return;
 
-    int n_x = center.x - (y - center.y);
-    int n_y = center.y + (x - center.x);
-    x = n_x;
-    y = n_y;
-    printf("wychodzę %d %d\n\n", x, y);
-}
+    int n_x = x - center.x;
+    int n_y = y - center.y;
+    if(n_x >= 0 && n_y >= 0){
+        x = center.x - abs(n_y);
+        y = center.y + abs(n_x);
+    } else if(n_x <= 0 && n_y >= 0){
+        x = center.x - abs(n_y);
+        y = center.y - abs(n_x);
+    } else if(n_x <= 0 && n_y <= 0){
+        x = center.x + abs(n_y);
+        y = center.y - abs(n_x);
+    } else if(n_x >= 0 && n_y <= 0){
+        x = center.x + abs(n_y);
+        y = center.y + abs(n_x);
+    }
 
-void Vector2::rotateRight(Vector2 center){
-    if(center.x == x && center.y == y)
-        return;
-
-    int n_x = center.x - (y - center.y);
-    int n_y = center.y + (x - center.x);
-    x = n_x;
-    y = n_y;
+    printf("NOWE %d %d\n", x, y);
 }

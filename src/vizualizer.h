@@ -17,8 +17,7 @@ class Vizualizer{
         bool canShapeFall(Shape* shape);
         bool canShapeMoveLeft(Shape* shape);
         bool canShapeMoveRight(Shape* shape);
-        bool canShapeRotateLeft(Shape* shape);
-        bool canShapeRotateRight(Shape* shape);
+        bool canShapeRotate(Shape* shape);
         void colorTiles(Shape* shape, sf::Color color);
         void blockTiles(Shape* shape);
 
