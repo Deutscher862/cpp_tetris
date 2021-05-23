@@ -60,7 +60,7 @@ bool Vizualizer::canShapeMoveRight(Shape* shape){
         Vector2* v = shape->getVectorAt(i);
         int x = v->x;
         int y = v->y;
-        if(y+1 == WIDTH || (x >= 0 && !grid[x][y-1]->isEmpty()))
+        if(y+1 == WIDTH || (x >= 0 && !grid[x][y+1]->isEmpty()))
             return false;
     }
     return true;
