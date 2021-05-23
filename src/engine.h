@@ -20,6 +20,10 @@ class Engine{
         void generateShape();
         void moveObject();
         void checkIfEnd();
+        void moveLeft();
+        void moveRight();
+        void rotate();
+        void fallFast();
         void keyHandler(sf::Event event);
 };
 

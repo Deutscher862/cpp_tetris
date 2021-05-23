@@ -59,6 +59,36 @@ void Engine::checkIfEnd(){
     }
 }
 
+void Engine::moveLeft(){
+    if(map.canShapeMoveLeft(currentShape)){
+        map.colorTiles(currentShape, sf::Color::Black);
+        currentShape->moveLeft();
+        map.colorTiles(currentShape, currentShape->getColor());
+    }
+}
+
+void Engine::moveRight(){
+    if(map.canShapeMoveRight(currentShape)){
+        map.colorTiles(currentShape, sf::Color::Black);
+        currentShape->moveRight();
+        map.colorTiles(currentShape, currentShape->getColor());
+    }
+}
+
+void Engine::rotate(){
+    if(map.canShapeRotate(currentShape)){
+        map.colorTiles(currentShape, sf::Color::Black);
+        currentShape->rotate();
+        map.colorTiles(currentShape, currentShape->getColor());
+    }
+}
+
+void Engine::fallFast(){
+    while(this->map.canShapeFall(currentShape)){
+        moveObject();
+    }
+}
+
 void Engine::keyHandler(sf::Event event){
     if (event.type == sf::Event::KeyPressed){
         switch(event.key.code){
@@ -67,33 +97,35 @@ void Engine::keyHandler(sf::Event event){
                 break;
 
             case sf::Keyboard::A:
-                if(map.canShapeMoveLeft(currentShape)){
-                    map.colorTiles(currentShape, sf::Color::Black);
-                    currentShape->moveLeft();
-                    map.colorTiles(currentShape, currentShape->getColor());
-                }
+                moveLeft();
                 break;
 
             case sf::Keyboard::D:
-                if(map.canShapeMoveRight(currentShape)){
-                    map.colorTiles(currentShape, sf::Color::Black);
-                    currentShape->moveRight();
-                    map.colorTiles(currentShape, currentShape->getColor());
-                }
+                moveRight();
                 break;
 
             case sf::Keyboard::W:
-                if(map.canShapeRotate(currentShape)){
-                    map.colorTiles(currentShape, sf::Color::Black);
-                    currentShape->rotate();
-                    map.colorTiles(currentShape, currentShape->getColor());
-                }
+                rotate();
                 break;
             
             case sf::Keyboard::S:
-                while(this->map.canShapeFall(currentShape)){
-                    moveObject();
-                }
+                fallFast();
+                break;
+
+            case sf::Keyboard::Left:
+                moveLeft();
+                break;
+
+            case sf::Keyboard::Right:
+                moveRight();
+                break;
+
+            case sf::Keyboard::Up:
+                rotate();
+                break;
+            
+            case sf::Keyboard::Down:
+                fallFast();
                 break;
 
             default:
