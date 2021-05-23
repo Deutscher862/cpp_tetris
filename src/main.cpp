@@ -23,6 +23,7 @@ int main()
         }
         e.moveObject();
         window.clear();
+        v.checkForFullRow();
         v.drawGrid();
         window.display();
 

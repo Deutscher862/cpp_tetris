@@ -20,6 +20,8 @@ class Vizualizer{
         bool canShapeRotate(Shape* shape);
         void colorTiles(Shape* shape, sf::Color color);
         void blockTiles(Shape* shape);
+        void checkForFullRow();
+        void removeRow(int firstRow);
 
 };
 

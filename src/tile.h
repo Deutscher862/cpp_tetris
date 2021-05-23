@@ -17,6 +17,7 @@ class Tile{
         void setColor(sf::Color color);
         void setPosition(int x, int y);
         sf::RectangleShape getRect();
+        sf::Color getColor() const {return color;}
         bool isEmpty() const {return empty;}
         void setEmpty(bool b){empty = b;}
 

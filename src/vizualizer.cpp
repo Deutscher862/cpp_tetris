@@ -71,7 +71,6 @@ bool Vizualizer::canShapeRotate(Shape* shape){
         Vector2* v = shape->getVectorAt(i);
         Vector2 v_test(v->x, v->y);
         v_test.y = v->y;
-        //printf("ORG: %d %d   n: %d %d\n", v->x, v->y, v_test.x, v_test.y);
         v_test.rotate(shape->getCenterVector());
         int x = v_test.x;
         int y = v_test.y;
@@ -79,4 +78,31 @@ bool Vizualizer::canShapeRotate(Shape* shape){
             return false;
     }
     return true;
+}
+
+void Vizualizer::checkForFullRow(){
+    for(int i = HEIGHT -1; i >= 0; i--){
+        int j = 0;
+        bool isFull = true;
+        while(j < WIDTH){
+            if(grid[i][j]->isEmpty()){
+                isFull = false;
+                break;
+            }
+            j++;
+        }
+        if(isFull){
+            removeRow(i);
+        }
+    }
+}
+
+void Vizualizer::removeRow(int row){
+    for(int i = row-1; i >= 0; i--){
+        for(int j = 0; j < WIDTH; j++){
+            grid[i+1][j]->setEmpty(grid[i][j]->isEmpty());
+            grid[i+1][j]->setColor(grid[i][j]->getColor());
+        }
+    }
+    checkForFullRow();
 }
