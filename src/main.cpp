@@ -1,14 +1,14 @@
 #include <iostream>
-#include "vizualizer.h"
+#include "map.h"
 #include "engine.h"
 #include <unistd.h>
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1000, 900), "TETRIS");
-    Vizualizer v(window);
-    Engine e(v);
-    e.generateShape();
+    Map map(window);
+    NextShapePanel panel(window);
+    Engine e(map, panel);
 
     while(window.isOpen())
     {
@@ -23,8 +23,9 @@ int main()
         }
         e.moveObject();
         window.clear();
-        v.checkForFullRow();
-        v.drawGrid();
+        map.checkForFullRow();
+        map.drawGrid();
+        panel.drawGrid();
         window.display();
 
         usleep(200000);

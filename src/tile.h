@@ -9,7 +9,6 @@ class Tile{
     private:
         sf::RectangleShape rectangle;
         sf::Color color;
-        Vector2 v;
         bool empty;
 
     public:
@@ -20,8 +19,6 @@ class Tile{
         sf::Color getColor() const {return color;}
         bool isEmpty() const {return empty;}
         void setEmpty(bool b){empty = b;}
-
-
 };
 
 #endif

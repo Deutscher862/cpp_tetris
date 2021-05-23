@@ -1,17 +1,17 @@
-#include "vizualizer.h"
+#include "map.h"
 #include "config.h"
 #include "tile.h"
 
-Vizualizer::Vizualizer(sf::RenderWindow &window) : window(window){
+Map::Map(sf::RenderWindow &window) : window(window){
     for(int i = 0; i < HEIGHT; i++){
         for(int j = 0; j < WIDTH; j++){
             grid[i][j] = new Tile();
-            grid[i][j]->setPosition(i, j);
+            grid[i][j]->setPosition(i*TILE_SIZE+50, j*TILE_SIZE+300);
         }
     }
 }
 
-void Vizualizer::drawGrid(){
+void Map::drawGrid(){
     for(auto & i : this->grid){
         for(auto t : i){
             this->window.draw(t->getRect());
@@ -19,7 +19,7 @@ void Vizualizer::drawGrid(){
     }
 }
 
-bool Vizualizer::canShapeFall(Shape* shape){
+bool Map::canShapeFall(Shape* shape){
     for(int i = 0; i < 4; i++){
         Vector2* v = shape->getVectorAt(i);
         int x = v->x;
@@ -29,7 +29,7 @@ bool Vizualizer::canShapeFall(Shape* shape){
     return true;
 }
 
-void Vizualizer::colorTiles(Shape* shape, sf::Color color){
+void Map::colorTiles(Shape* shape, sf::Color color){
     for(int i = 0; i < 4; i++){
         Vector2* v = shape->getVectorAt(i);
         if(v->x >= 0)
@@ -37,14 +37,14 @@ void Vizualizer::colorTiles(Shape* shape, sf::Color color){
     }
 }
 
-void Vizualizer::blockTiles(Shape* shape){
+void Map::blockTiles(Shape* shape){
     for(int i = 0; i < 4; i++){
         Vector2* v = shape->getVectorAt(i);
         grid[v->x][v->y]->setEmpty(false);
     }
 }
 
-bool Vizualizer::canShapeMoveLeft(Shape* shape){
+bool Map::canShapeMoveLeft(Shape* shape){
     for(int i = 0; i < 4; i++){
         Vector2* v = shape->getVectorAt(i);
         int x = v->x;
@@ -55,7 +55,7 @@ bool Vizualizer::canShapeMoveLeft(Shape* shape){
     return true;
 }
 
-bool Vizualizer::canShapeMoveRight(Shape* shape){
+bool Map::canShapeMoveRight(Shape* shape){
     for(int i = 0; i < 4; i++){
         Vector2* v = shape->getVectorAt(i);
         int x = v->x;
@@ -66,7 +66,7 @@ bool Vizualizer::canShapeMoveRight(Shape* shape){
     return true;
 }
 
-bool Vizualizer::canShapeRotate(Shape* shape){
+bool Map::canShapeRotate(Shape* shape){
     for(int i = 0; i < 4; i++){
         Vector2* v = shape->getVectorAt(i);
         Vector2 v_test(v->x, v->y);
@@ -80,7 +80,7 @@ bool Vizualizer::canShapeRotate(Shape* shape){
     return true;
 }
 
-void Vizualizer::checkForFullRow(){
+void Map::checkForFullRow(){
     for(int i = HEIGHT -1; i >= 0; i--){
         int j = 0;
         bool isFull = true;
@@ -97,7 +97,7 @@ void Vizualizer::checkForFullRow(){
     }
 }
 
-void Vizualizer::removeRow(int row){
+void Map::removeRow(int row){
     for(int i = row-1; i >= 0; i--){
         for(int j = 0; j < WIDTH; j++){
             grid[i+1][j]->setEmpty(grid[i][j]->isEmpty());
@@ -105,4 +105,28 @@ void Vizualizer::removeRow(int row){
         }
     }
     checkForFullRow();
+}
+
+NextShapePanel::NextShapePanel(sf::RenderWindow &window) : window(window){
+    for(int i = 0; i < 2; i++){    
+        for(int j = 0; j < 4; j++){
+            grid[i][j] = new Tile();
+            grid[i][j]->setPosition(i*TILE_SIZE+50, j*TILE_SIZE+30);
+        }
+    }
+}
+
+void NextShapePanel::colorTiles(Shape* shape, sf::Color color){
+    for(int i = 0; i < 4; i++){
+        Vector2* v = shape->getVectorAt(i);
+        grid[v->x+2][v->y-3]->setColor(color);
+    }
+}
+
+void NextShapePanel::drawGrid(){
+    for(auto & i : this->grid){
+        for(auto t : i){
+            this->window.draw(t->getRect());
+        }
+    }
 }

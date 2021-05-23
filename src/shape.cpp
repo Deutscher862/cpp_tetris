@@ -192,9 +192,7 @@ void J_Shape::rotate(){
 S_Shape::S_Shape(){
     this->color = sf::Color::Green;
     this->center = Vector2(-1, 5);
-    printf("kurwa XD %d %d\n", center.x, center.y);
     this->center.setVal(-1, 5);
-    printf("kurwa XDDDD %d %d\n", center.x, center.y);
     for(int i = 0; i < 4; i++){
         map[i] = new Vector2(-5, -5);
     }

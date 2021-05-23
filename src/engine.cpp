@@ -1,46 +1,53 @@
 #include "engine.h"
 
-Engine::Engine(Vizualizer& n_viz): vizualizer(n_viz){}
+Engine::Engine(Map& n_map, NextShapePanel& n_panel): map(n_map), panel(n_panel){
+    generateShape();
+    this->currentShape = nextShape;
+    generateShape();
+}
 
 void Engine::generateShape(){
     srand (time(NULL));
     int shapeNumber = rand() % 7;
     switch(shapeNumber){
         case 0:
-            this->currentShape = new O_Shape();
+            this->nextShape = new O_Shape();
             break;
         case 1:
-            this->currentShape = new I_Shape();
+            this->nextShape = new I_Shape();
             break;
         case 2:
-            this->currentShape = new T_Shape();
+            this->nextShape = new T_Shape();
             break;
         case 3:
-            this->currentShape = new L_Shape();
+            this->nextShape = new L_Shape();
             break;
         case 4:
-            this->currentShape = new J_Shape();
+            this->nextShape = new J_Shape();
             break;
         case 5:
-            this->currentShape = new S_Shape();
+            this->nextShape = new S_Shape();
             break;
         case 6:
-            this->currentShape = new Z_Shape();
+            this->nextShape = new Z_Shape();
             break;
         default:
             break;
-        }
+    }
+    panel.colorTiles(nextShape, nextShape->getColor());
 }
 
 void Engine::moveObject(){
-    if(this->vizualizer.canShapeFall(currentShape)){
-        vizualizer.colorTiles(currentShape, sf::Color::Black);
+    if(this->map.canShapeFall(currentShape)){
+        map.colorTiles(currentShape, sf::Color::Black);
         this->currentShape->fall(); 
-        vizualizer.colorTiles(currentShape, currentShape->getColor());
+        map.colorTiles(currentShape, currentShape->getColor());
     }
     else{
         checkIfEnd();
-        vizualizer.blockTiles(currentShape);
+        map.blockTiles(currentShape);
+        currentShape = nextShape;
+        panel.colorTiles(nextShape, sf::Color::Black);
         generateShape();
     }
 }
@@ -60,32 +67,31 @@ void Engine::keyHandler(sf::Event event){
                 break;
 
             case sf::Keyboard::A:
-                if(vizualizer.canShapeMoveLeft(currentShape)){
-                    vizualizer.colorTiles(currentShape, sf::Color::Black);
+                if(map.canShapeMoveLeft(currentShape)){
+                    map.colorTiles(currentShape, sf::Color::Black);
                     currentShape->moveLeft();
-                    vizualizer.colorTiles(currentShape, currentShape->getColor());
+                    map.colorTiles(currentShape, currentShape->getColor());
                 }
                 break;
 
             case sf::Keyboard::D:
-                if(vizualizer.canShapeMoveRight(currentShape)){
-                    vizualizer.colorTiles(currentShape, sf::Color::Black);
+                if(map.canShapeMoveRight(currentShape)){
+                    map.colorTiles(currentShape, sf::Color::Black);
                     currentShape->moveRight();
-                    vizualizer.colorTiles(currentShape, currentShape->getColor());
+                    map.colorTiles(currentShape, currentShape->getColor());
                 }
                 break;
 
             case sf::Keyboard::W:
-                if(vizualizer.canShapeRotate(currentShape)){
-                    vizualizer.colorTiles(currentShape, sf::Color::Black);
+                if(map.canShapeRotate(currentShape)){
+                    map.colorTiles(currentShape, sf::Color::Black);
                     currentShape->rotate();
-                    vizualizer.colorTiles(currentShape, currentShape->getColor());
+                    map.colorTiles(currentShape, currentShape->getColor());
                 }
                 break;
 
             default:
                 break;
-            
         }           
     }
 }

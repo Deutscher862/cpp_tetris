@@ -5,16 +5,18 @@
 #include <time.h>
 #include "config.h"
 #include "vector2.h"
-#include "vizualizer.h"
+#include "map.h"
 #include "shape.h"
 
 class Engine{
     private:
-        Vizualizer& vizualizer;
+        Map& map;
+        NextShapePanel& panel;
         Shape* currentShape;
+        Shape* nextShape;
 
     public:
-        Engine(Vizualizer& n_viz);
+        Engine(Map& n_viz, NextShapePanel& n_panel);
         void generateShape();
         void moveObject();
         void checkIfEnd();

@@ -3,7 +3,6 @@
 
 #define WIDTH 10
 #define HEIGHT 20
-#define SHAPE_WIDTH 4
-#define SHAPE_HEIGHT 4
+#define TILE_SIZE 40
 
 #endif

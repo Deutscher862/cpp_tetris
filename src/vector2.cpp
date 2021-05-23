@@ -2,7 +2,6 @@
 #include <math.h>
 
 void Vector2::rotate(Vector2 center){
-    printf("STARE %d %d \ncenter %d %d\n", x, y, center.x, center.y);
     if(center.x == x && center.y == y)
         return;
 
@@ -21,6 +20,4 @@ void Vector2::rotate(Vector2 center){
         x = center.x + abs(n_y);
         y = center.y + abs(n_x);
     }
-
-    printf("NOWE %d %d\n", x, y);
 }
