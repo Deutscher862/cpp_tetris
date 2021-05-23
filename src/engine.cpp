@@ -89,6 +89,12 @@ void Engine::keyHandler(sf::Event event){
                     map.colorTiles(currentShape, currentShape->getColor());
                 }
                 break;
+            
+            case sf::Keyboard::S:
+                while(this->map.canShapeFall(currentShape)){
+                    moveObject();
+                }
+                break;
 
             default:
                 break;
