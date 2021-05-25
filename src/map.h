@@ -20,8 +20,8 @@ class Map{
         bool canShapeRotate(Shape* shape);
         void colorTiles(Shape* shape, sf::Color color);
         void blockTiles(Shape* shape);
-        void checkForFullRow();
-        void removeRow(int firstRow);
+        int checkForFullRow(int count);
+        int removeRow(int firstRow, int count);
 };
 
 class NextShapePanel{

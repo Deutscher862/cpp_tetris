@@ -14,6 +14,8 @@ class Engine{
         NextShapePanel& panel;
         Shape* currentShape;
         Shape* nextShape;
+        long points = 0;
+        int pointsArr [4] {100, 300, 500, 800};
 
     public:
         Engine(Map& n_viz, NextShapePanel& n_panel);
@@ -25,6 +27,8 @@ class Engine{
         void rotate();
         void fallFast();
         void keyHandler(sf::Event event);
+        long getPoints(){return points;}
+        void addPoints();
 };
 
 #endif

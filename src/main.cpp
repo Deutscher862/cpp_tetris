@@ -23,7 +23,7 @@ int main()
         }
         e.moveObject();
         window.clear();
-        map.checkForFullRow();
+        e.addPoints();
         map.drawGrid();
         panel.drawGrid();
         window.display();

@@ -80,7 +80,7 @@ bool Map::canShapeRotate(Shape* shape){
     return true;
 }
 
-void Map::checkForFullRow(){
+int Map::checkForFullRow(int count){
     for(int i = HEIGHT -1; i >= 0; i--){
         int j = 0;
         bool isFull = true;
@@ -92,19 +92,23 @@ void Map::checkForFullRow(){
             j++;
         }
         if(isFull){
-            removeRow(i);
+            return removeRow(i, count);
+        }
+        else{
+            return count;
         }
     }
+    return 0;
 }
 
-void Map::removeRow(int row){
+int Map::removeRow(int row, int count){
     for(int i = row-1; i >= 0; i--){
         for(int j = 0; j < WIDTH; j++){
             grid[i+1][j]->setEmpty(grid[i][j]->isEmpty());
             grid[i+1][j]->setColor(grid[i][j]->getColor());
         }
     }
-    checkForFullRow();
+    return checkForFullRow(count+1);
 }
 
 NextShapePanel::NextShapePanel(sf::RenderWindow &window) : window(window){
