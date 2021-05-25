@@ -136,5 +136,6 @@ void Engine::keyHandler(sf::Event event){
 
 void Engine::addPoints(){
     long id = map.checkForFullRow(0);
-    points += pointsArr[id-1];
+    if(id > 0);
+        points += pointsArr[id-1];
 }

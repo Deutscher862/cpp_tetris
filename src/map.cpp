@@ -94,11 +94,8 @@ int Map::checkForFullRow(int count){
         if(isFull){
             return removeRow(i, count);
         }
-        else{
-            return count;
-        }
     }
-    return 0;
+    return count;
 }
 
 int Map::removeRow(int row, int count){

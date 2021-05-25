@@ -1,14 +1,17 @@
 #include <iostream>
 #include "map.h"
 #include "engine.h"
+#include "textDisplayer.h"
 #include <unistd.h>
+#include <string.h>
 
 int main()
-{
+{   
     sf::RenderWindow window(sf::VideoMode(1000, 900), "TETRIS");
     Map map(window);
     NextShapePanel panel(window);
     Engine e(map, panel);
+    TextDisplayer displayer(window);
 
     while(window.isOpen())
     {
@@ -24,6 +27,8 @@ int main()
         e.moveObject();
         window.clear();
         e.addPoints();
+        displayer.setPoints(e.getPoints());
+        displayer.draw();
         map.drawGrid();
         panel.drawGrid();
         window.display();
