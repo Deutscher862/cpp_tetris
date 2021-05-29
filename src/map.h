@@ -22,6 +22,7 @@ class Map{
         void blockTiles(Shape* shape);
         int checkForFullRow(int count);
         int removeRow(int firstRow, int count);
+        void clean();
 };
 
 class NextShapePanel{
@@ -33,6 +34,7 @@ class NextShapePanel{
         explicit NextShapePanel(sf::RenderWindow &window);
         void drawGrid();
         void colorTiles(Shape* shape, sf::Color color);
+        void clean();
 };
 
 #endif

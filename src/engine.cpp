@@ -1,13 +1,15 @@
 #include "engine.h"
 
-Engine::Engine(Map& n_map, NextShapePanel& n_panel): map(n_map), panel(n_panel){
+Engine::Engine(Map& n_map, NextShapePanel& n_panel, TextDisplayer& n_displayer): map(n_map), panel(n_panel), displayer(n_displayer){
     generateShape();
     this->currentShape = nextShape;
     generateShape();
+    gameEnded = false;
+
 }
 
 void Engine::generateShape(){
-    srand (time(NULL));
+        srand (time(NULL));
     int shapeNumber = rand() % 7;
     switch(shapeNumber){
         case 0:
@@ -44,19 +46,24 @@ void Engine::moveObject(){
         map.colorTiles(currentShape, currentShape->getColor());
     }
     else{
-        checkIfEnd();
-        map.blockTiles(currentShape);
-        currentShape = nextShape;
-        panel.colorTiles(nextShape, sf::Color::Black);
-        generateShape();
+        if(!checkIfGameEnded()){
+            map.blockTiles(currentShape);
+            currentShape = nextShape;
+            panel.colorTiles(nextShape, sf::Color::Black);
+            generateShape();
+        }
     }
 }
 
-void Engine::checkIfEnd(){
+bool Engine::checkIfGameEnded(){
     for(int i = 0; i < 4; i++){
         Vector2* v = currentShape->getVectorAt(i);
-        if(v->x < 0) exit(0);
+        if(v->x < 0){
+            gameEnded = true;
+            return true;
+        }
     }
+    return false;
 }
 
 void Engine::moveLeft(){
@@ -127,6 +134,10 @@ void Engine::keyHandler(sf::Event event){
             case sf::Keyboard::Down:
                 fallFast();
                 break;
+            
+            case sf::Keyboard::R:
+                restart();
+                break;
 
             default:
                 break;
@@ -138,4 +149,15 @@ void Engine::addPoints(){
     long id = map.checkForFullRow(0);
     if(id > 0);
         points += pointsArr[id-1];
+}
+
+void Engine::restart(){
+    points = 0;
+    gameEnded = false;
+    panel.colorTiles(nextShape, sf::Color::Black);
+    generateShape();
+    this->currentShape = nextShape;
+    generateShape();
+    displayer.reset();
+    map.clean();
 }

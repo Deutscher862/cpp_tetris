@@ -108,6 +108,15 @@ int Map::removeRow(int row, int count){
     return checkForFullRow(count+1);
 }
 
+void Map::clean(){
+    for(int i = 0; i < HEIGHT; i++){
+        for(int j = 0; j < WIDTH; j++){
+            grid[i][j]->setEmpty(true);
+            grid[i][j]->setColor(sf::Color::Black);
+        }
+    }
+}
+
 NextShapePanel::NextShapePanel(sf::RenderWindow &window) : window(window){
     for(int i = 0; i < 2; i++){    
         for(int j = 0; j < 4; j++){
@@ -128,6 +137,14 @@ void NextShapePanel::drawGrid(){
     for(auto & i : this->grid){
         for(auto t : i){
             this->window.draw(t->getRect());
+        }
+    }
+}
+
+void NextShapePanel::clean(){
+    for(int i = 0; i < 2; i++){    
+        for(int j = 0; j < 4; j++){
+            grid[i][j]->setColor(sf::Color::Black);
         }
     }
 }

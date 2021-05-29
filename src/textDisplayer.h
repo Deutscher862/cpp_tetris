@@ -10,13 +10,16 @@ class TextDisplayer{
         sf::Font font;
         sf::Text points;
         sf::Text pointsValue;
+        sf::Text gameOver;
 
     public:
         TextDisplayer(sf::RenderWindow &window);
         void setPoints(long n_points);
         sf::Text getPointsValue(){return pointsValue;}
         sf::Text getPoints(){return points;}
-        void draw();
+        void drawText();
+        void drawGameOver();
+        void reset();
 };
 
 #endif
