@@ -1,15 +1,15 @@
 #include "engine.h"
 
-Engine::Engine(Map& n_map, NextShapePanel& n_panel, TextDisplayer& n_displayer): map(n_map), panel(n_panel), displayer(n_displayer){
+Engine::Engine(Map& n_map, NextShapePanel& n_panel, TextDisplayer& n_displayer): map(n_map), panel(n_panel), textDisplayer(n_displayer){
     generateShape();
     this->currentShape = nextShape;
     generateShape();
     gameEnded = false;
-
+    gameSpeed = 200000;
 }
 
 void Engine::generateShape(){
-        srand (time(NULL));
+    srand (time(NULL));
     int shapeNumber = rand() % 7;
     switch(shapeNumber){
         case 0:
@@ -39,7 +39,7 @@ void Engine::generateShape(){
     panel.colorTiles(nextShape, nextShape->getColor());
 }
 
-void Engine::moveObject(){
+void Engine::moveObject(){ 
     if(this->map.canShapeFall(currentShape)){
         map.colorTiles(currentShape, sf::Color::Black);
         this->currentShape->fall(); 
@@ -60,6 +60,10 @@ bool Engine::checkIfGameEnded(){
         Vector2* v = currentShape->getVectorAt(i);
         if(v->x < 0){
             gameEnded = true;
+            if(points > higherScore){
+                higherScore = points;
+                textDisplayer.setHighestScore(higherScore);
+            }
             return true;
         }
     }
@@ -147,8 +151,11 @@ void Engine::keyHandler(sf::Event event){
 
 void Engine::addPoints(){
     long id = map.checkForFullRow(0);
-    if(id > 0);
+    int div = points/500;
+    if(id > 0)
         points += pointsArr[id-1];
+    if(div != points/500)
+        gameSpeed -= 20000;
 }
 
 void Engine::restart(){
@@ -158,6 +165,6 @@ void Engine::restart(){
     generateShape();
     this->currentShape = nextShape;
     generateShape();
-    displayer.reset();
+    textDisplayer.reset();
     map.clean();
 }

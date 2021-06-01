@@ -121,7 +121,7 @@ NextShapePanel::NextShapePanel(sf::RenderWindow &window) : window(window){
     for(int i = 0; i < 2; i++){    
         for(int j = 0; j < 4; j++){
             grid[i][j] = new Tile();
-            grid[i][j]->setPosition(i*TILE_SIZE+50, j*TILE_SIZE+30);
+            grid[i][j]->setPosition(i*TILE_SIZE+150, j*TILE_SIZE+80);
         }
     }
 }

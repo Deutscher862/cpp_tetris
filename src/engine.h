@@ -13,12 +13,14 @@ class Engine{
     private:
         Map& map;
         NextShapePanel& panel;
-        TextDisplayer& displayer;
+        TextDisplayer& textDisplayer;
         Shape* currentShape;
         Shape* nextShape;
         long points = 0;
+        long higherScore = -1;
         int pointsArr [4] {100, 300, 500, 800};
         bool gameEnded;
+        long gameSpeed;
 
     public:
         Engine(Map& n_viz, NextShapePanel& n_panel, TextDisplayer& n_displayer);
@@ -31,6 +33,7 @@ class Engine{
         void fallFast();
         void keyHandler(sf::Event event);
         long getPoints(){return points;}
+        long getSpeed(){return gameSpeed;}
         void addPoints();
         bool isGameOver(){return gameEnded;}
         void restart();

@@ -1,8 +1,7 @@
 #include <iostream>
 #include  "tetris.h"
 
-int main()
-{   
+int main(){   
     Tetris tetris;
     tetris.run();
     return 0;

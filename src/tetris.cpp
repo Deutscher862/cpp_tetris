@@ -5,14 +5,12 @@
 #include <unistd.h>
 #include <string.h>
 
-
 void Tetris::run(){
     sf::RenderWindow window(sf::VideoMode(1000, 900), "TETRIS");
     Map map(window);
     NextShapePanel panel(window);
     TextDisplayer displayer(window);
     Engine engine(map, panel, displayer);
-
     while(window.isOpen())
     {
         sf::Event event;
@@ -23,7 +21,7 @@ void Tetris::run(){
                 engine.keyHandler(event);
             }
         }
-        if(!engine.isGameOver()){       
+        if(!engine.isGameOver()){      
             engine.moveObject();
             window.clear();
             engine.addPoints();
@@ -32,13 +30,12 @@ void Tetris::run(){
             map.drawGrid();
             panel.drawGrid();
             window.display();
-            usleep(150000);
+            usleep(engine.getSpeed());
         }
         else{
             window.clear();
             displayer.drawGameOver();
             window.display();
-            //usleep(5000000);
         }
 
     }
