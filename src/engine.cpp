@@ -1,4 +1,5 @@
 #include "engine.h"
+#include <unistd.h>
 
 Engine::Engine(Map& n_map, NextShapePanel& n_panel, TextDisplayer& n_displayer): map(n_map), panel(n_panel), textDisplayer(n_displayer){
     generateShape();

@@ -1,28 +1,30 @@
 #include "shape.h"
 
-void decreaseVal(Vector2* map[4]){
+void Shape::fall(){
     for(int i = 0; i < 4; i++){
         map[i]->x++;
     }
+    center.x++;
 }
 
-void setLeft(Vector2* map[4]){
+void Shape::moveLeft(){
     for(int i = 0; i < 4; i++){
         map[i]->y--;
     } 
+    center.y--;
 }
 
-void setRight(Vector2* map[4]){
+void Shape::moveRight(){
     for(int i = 0; i < 4; i++){
         map[i]->y++;
     }
+    center.y++;
 }
 
-void turnLeft(Vector2* map[4], Vector2 center){
+void Shape::rotate(){
     for(int i = 0; i < 4; i++)
         map[i]->rotate(center);
 }
-
 
 O_Shape::O_Shape(){
     this->color = sf::Color::Yellow;
@@ -38,25 +40,9 @@ O_Shape::O_Shape(){
 
 }
 
-void O_Shape::fall(){
-    decreaseVal(map);
-    center.x++;
-}
-
-void O_Shape::moveLeft(){
-    setLeft(map);
-    center.y--;
-}
-
-void O_Shape::moveRight(){
-    setRight(map);
-    center.y++;
-}
-
 void O_Shape::rotate(){
     return;
 }
-
 
 I_Shape::I_Shape(){
     this->color = sf::Color::Blue;
@@ -70,25 +56,6 @@ I_Shape::I_Shape(){
     map[2]->setVal(-1, 5);
     map[3]->setVal(-1, 6);
 
-}
-
-void I_Shape::fall(){
-    decreaseVal(map);
-    center.x++;
-}
-
-void I_Shape::moveLeft(){
-    setLeft(map);
-    center.y--;
-}
-
-void I_Shape::moveRight(){
-    setRight(map);
-    center.y++;
-}
-
-void I_Shape::rotate(){
-    turnLeft(map, center);
 }
 
 T_Shape::T_Shape(){
@@ -105,25 +72,6 @@ T_Shape::T_Shape(){
 
 }
 
-void T_Shape::fall(){
-    decreaseVal(map);
-    center.x++;
-}
-
-void T_Shape::moveLeft(){
-    setLeft(map);
-    center.y--;
-}
-
-void T_Shape::moveRight(){
-    setRight(map);
-    center.y++;
-}
-
-void T_Shape::rotate(){
-    turnLeft(map, center);
-}
-
 L_Shape::L_Shape(){
     this->color = sf::Color::White;
     this->center = Vector2(-1, 5);
@@ -135,25 +83,6 @@ L_Shape::L_Shape(){
     map[1]->setVal(-1, 5);
     map[2]->setVal(-1, 6);
     map[3]->setVal(-2, 6);
-}
-
-void L_Shape::fall(){
-    decreaseVal(map);
-    center.x++;
-}
-
-void L_Shape::moveLeft(){
-    setLeft(map);
-    center.y--;
-}
-
-void L_Shape::moveRight(){
-    setRight(map);
-    center.y++;
-}
-
-void L_Shape::rotate(){
-    turnLeft(map, center);
 }
 
 J_Shape::J_Shape(){
@@ -170,25 +99,6 @@ J_Shape::J_Shape(){
 
 }
 
-void J_Shape::fall(){
-    decreaseVal(map);
-    center.x++;
-}
-
-void J_Shape::moveLeft(){
-    setLeft(map);
-    center.y--;
-}
-
-void J_Shape::moveRight(){
-    setRight(map);
-    center.y++;
-}
-
-void J_Shape::rotate(){
-    turnLeft(map, center);
-}
-
 S_Shape::S_Shape(){
     this->color = sf::Color::Green;
     this->center = Vector2(-1, 5);
@@ -203,25 +113,6 @@ S_Shape::S_Shape(){
 
 }
 
-void S_Shape::fall(){
-    decreaseVal(map);
-    center.x++;
-}
-
-void S_Shape::moveLeft(){
-    setLeft(map);
-    center.y--;
-}
-
-void S_Shape::moveRight(){
-    setRight(map);
-    center.y++;
-}
-
-void S_Shape::rotate(){
-    turnLeft(map, center);
-}
-
 Z_Shape::Z_Shape(){
     this->color = sf::Color::Red;
     this->center = Vector2(-1, 5);
@@ -233,23 +124,4 @@ Z_Shape::Z_Shape(){
     map[1]->setVal(-2, 5);
     map[2]->setVal(-1, 5);
     map[3]->setVal(-1, 6);
-}
-
-void Z_Shape::fall(){
-    decreaseVal(map);
-    center.x++;
-}
-
-void Z_Shape::moveLeft(){
-    setLeft(map);
-    center.y--;
-}
-
-void Z_Shape::moveRight(){
-    setRight(map);
-    center.y++;
-}
-
-void Z_Shape::rotate(){
-    turnLeft(map, center);
 }

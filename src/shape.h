@@ -12,10 +12,10 @@ class Shape{
         Vector2* map [4];
 
     public:
-        virtual void fall() = 0;
-        virtual void moveLeft() = 0;
-        virtual void moveRight() = 0;
-        virtual void rotate() = 0;
+        virtual void fall();
+        virtual void moveLeft();
+        virtual void moveRight();
+        virtual void rotate();
         Vector2* getVectorAt(int x) {return map[x];}
         sf::Color getColor() {return color;}
         Vector2 getCenterVector(){return center;}
@@ -24,64 +24,37 @@ class Shape{
 class O_Shape : public Shape{
     public:
         O_Shape();
-        void fall();
-        void moveLeft();
-        void moveRight();
         void rotate();
 };
 
 class I_Shape : public Shape{
     public:
         I_Shape();
-        void fall();
-        void moveLeft();
-        void moveRight();
-        void rotate();
 };
 
 class T_Shape : public Shape{
     public:
         T_Shape();
-        void fall();
-        void moveLeft();
-        void moveRight();
-        void rotate();
 };
 
 class L_Shape : public Shape{
     public:
         L_Shape();
-        void fall();
-        void moveLeft();
-        void moveRight();
-        void rotate();
 };
 
 class J_Shape : public Shape{
     public:
         J_Shape();
-        void fall();
-        void moveLeft();
-        void moveRight();
-        void rotate();
 };
 
 class S_Shape : public Shape{
     public:
         S_Shape();
-        void fall();
-        void moveLeft();
-        void moveRight();
-        void rotate();
 };
 
 class Z_Shape : public Shape{
     public:
         Z_Shape();
-        void fall();
-        void moveLeft();
-        void moveRight();
-        void rotate();
 };
 
 #endif

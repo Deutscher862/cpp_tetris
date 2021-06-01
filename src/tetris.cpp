@@ -11,8 +11,7 @@ void Tetris::run(){
     NextShapePanel panel(window);
     TextDisplayer displayer(window);
     Engine engine(map, panel, displayer);
-    while(window.isOpen())
-    {
+    while(window.isOpen()){
         sf::Event event;
         while (window.pollEvent(event)){
             if (event.type == sf::Event::Closed)
@@ -37,6 +36,5 @@ void Tetris::run(){
             displayer.drawGameOver();
             window.display();
         }
-
     }
 }
