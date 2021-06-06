@@ -24,7 +24,7 @@ class Shape{
 class O_Shape : public Shape{
     public:
         O_Shape();
-        void rotate();
+        void rotate() override;
 };
 
 class I_Shape : public Shape{

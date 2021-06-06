@@ -17,12 +17,12 @@ void Shape::moveLeft(){
 void Shape::moveRight(){
     for(int i = 0; i < 4; i++){
         map[i]->y++;
-    }
+    } 
     center.y++;
 }
 
 void Shape::rotate(){
-    for(int i = 0; i < 4; i++)
+    for(int i = 0; i < 4; i++) 
         map[i]->rotate(center);
 }
 

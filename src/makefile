@@ -1,16 +1,16 @@
 LIBS=-lsfml-graphics -lsfml-window -lsfml-system
-CXX := g++
+FLAGS := -Wall -pedantic -Wextra -Werror
 
 all: tetris
 
 %.o: %.cpp
-		$(CXX) -c $< -o $@
+		g++ $(FLAGS) -c $< -o $@
 
 %.o: %.h
-		$(CXX) -c $< -o $@
+		g++ $(FLAGS) -c $< -o $@
 
 tetris: main.o tetris.o map.o tile.o engine.o shape.o vector2.o textDisplayer.o
-		$(CXX) -o tetris main.o tetris.o map.o tile.o engine.o shape.o vector2.o textDisplayer.o $(LIBS)
+		g++ $(FLAGS) -o tetris main.o tetris.o map.o tile.o engine.o shape.o vector2.o textDisplayer.o $(LIBS)
 
 run:
 	./tetris
