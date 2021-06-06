@@ -1,4 +1,4 @@
-#ifndef TEXTDISPLAYER_H // include guard
+#ifndef TEXTDISPLAYER_H
 #define TEXTDISPLAYER_H
 
 #include <SFML/Graphics.hpp>

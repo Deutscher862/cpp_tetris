@@ -1,4 +1,4 @@
-#ifndef VECTOR2_H // include guard
+#ifndef VECTOR2_H
 #define VECTOR2_H
 
 #include <SFML/Graphics.hpp>

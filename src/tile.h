@@ -1,4 +1,4 @@
-#ifndef TILE_H // include guard
+#ifndef TILE_H
 #define TILE_H
 
 #include <SFML/Graphics.hpp>

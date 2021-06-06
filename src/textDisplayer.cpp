@@ -19,7 +19,7 @@ TextDisplayer::TextDisplayer(sf::RenderWindow &window) : window(window){
     highestScore = setText(30, 750, 200, "Highest score:");
     highestScoreValue = setText(30, 840, 250, "-");
     nextBrick = setText(30, 80, 100, "Next brick:");
-    controls = setText(20, 40, 600, "A, left   - move left\nD, right - move right\nW, up     - rotate brick\nS, down - throw down\nR           - restart game\nescape   - exit");
+    controls = setText(20, 40, 650, "A, left   - move left\nD, right - move right\nW, up     - rotate brick\nS, down - throw down\nR           - restart game\nescape   - exit");
 }
 
 void TextDisplayer::setPoints(long n_points){

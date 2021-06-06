@@ -37,7 +37,6 @@ O_Shape::O_Shape(){
     map[1]->setVal(-1, 5);
     map[2]->setVal(-2, 4);
     map[3]->setVal(-2, 5);
-
 }
 
 void O_Shape::rotate(){
@@ -55,7 +54,6 @@ I_Shape::I_Shape(){
     map[1]->setVal(-1, 4);
     map[2]->setVal(-1, 5);
     map[3]->setVal(-1, 6);
-
 }
 
 T_Shape::T_Shape(){
@@ -69,7 +67,6 @@ T_Shape::T_Shape(){
     map[1]->setVal(-2, 3);
     map[2]->setVal(-2, 4);
     map[3]->setVal(-2, 5);
-
 }
 
 L_Shape::L_Shape(){
@@ -96,7 +93,6 @@ J_Shape::J_Shape(){
     map[1]->setVal(-1, 5);
     map[2]->setVal(-1, 6);
     map[3]->setVal(-2, 4);
-
 }
 
 S_Shape::S_Shape(){
@@ -110,7 +106,6 @@ S_Shape::S_Shape(){
     map[1]->setVal(-1, 5);
     map[2]->setVal(-2, 5);
     map[3]->setVal(-2, 6);
-
 }
 
 Z_Shape::Z_Shape(){
