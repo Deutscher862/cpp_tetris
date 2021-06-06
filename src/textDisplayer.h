@@ -14,11 +14,13 @@ class TextDisplayer{
         sf::Text highestScoreValue;
         sf::Text gameOver;
         sf::Text nextBrick;
+        sf::Text controls;
 
     public:
         TextDisplayer(sf::RenderWindow &window);
         void setPoints(long n_points);
         void setHighestScore(long h_score);
+        sf::Text setText(int size, int x, int y, std::string val);
         sf::Text getPointsValue(){return pointsValue;}
         sf::Text getPointsTitle(){return pointsTitle;}
         void drawText();
