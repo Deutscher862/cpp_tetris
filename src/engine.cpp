@@ -11,7 +11,7 @@ Engine::Engine(Map& n_map, NextShapePanel& n_panel, TextDisplayer& n_displayer):
 
 void Engine::generateShape(){
     srand (time(NULL));
-    int shapeNumber = rand() % 7;
+    int shapeNumber = (rand()) % 7;
     switch(shapeNumber){
         case 0:
             this->nextShape = new O_Shape();
@@ -162,6 +162,7 @@ void Engine::addPoints(){
 void Engine::restart(){
     points = 0;
     gameEnded = false;
+    gameSpeed = 200000;
     panel.colorTiles(nextShape, sf::Color::Black);
     generateShape();
     this->currentShape = nextShape;

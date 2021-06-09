@@ -12,6 +12,7 @@ class Shape{
         Vector2* map [4];
 
     public:
+        virtual ~Shape(){};
         virtual void fall();
         virtual void moveLeft();
         virtual void moveRight();
