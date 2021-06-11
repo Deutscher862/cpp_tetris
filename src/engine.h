@@ -32,10 +32,10 @@ class Engine{
         void rotate();
         void fallFast();
         void keyHandler(sf::Event event);
-        long getPoints(){return points;}
-        long getSpeed(){return gameSpeed;}
+        long getPoints() const {return points;}
+        long getSpeed() const {return gameSpeed;}
         void addPoints();
-        bool isGameOver(){return gameEnded;}
+        bool isGameOver() const {return gameEnded;}
         void restart();
 };
 

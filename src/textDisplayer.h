@@ -21,8 +21,8 @@ class TextDisplayer{
         void setPoints(long n_points);
         void setHighestScore(long h_score);
         sf::Text setText(int size, int x, int y, std::string val);
-        sf::Text getPointsValue(){return pointsValue;}
-        sf::Text getPointsTitle(){return pointsTitle;}
+        sf::Text getPointsValue() const {return pointsValue;}
+        sf::Text getPointsTitle() const {return pointsTitle;}
         void drawText();
         void drawGameOver();
         void reset();

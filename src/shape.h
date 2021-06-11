@@ -17,9 +17,9 @@ class Shape{
         virtual void moveLeft();
         virtual void moveRight();
         virtual void rotate();
-        Vector2* getVectorAt(int x) {return map[x];}
-        sf::Color getColor() {return color;}
-        Vector2 getCenterVector(){return center;}
+        Vector2* getVectorAt(int x) const {return map[x];}
+        sf::Color getColor() const {return color;}
+        Vector2 getCenterVector() const {return center;}
 };
 
 class O_Shape : public Shape{
